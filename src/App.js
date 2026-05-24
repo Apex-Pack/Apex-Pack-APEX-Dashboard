@@ -13,11 +13,13 @@ const AGENTS = [
 ];
 
 const styles = {
-  root: {
+root: {
     background: '#0D1117',
     minHeight: '100vh',
+    width: '100%',
     color: '#C9A84C',
     fontFamily: "'Share Tech Mono', 'Courier New', monospace",
+    overflowX: 'hidden',
   },
   topbar: {
     background: '#07080f',
@@ -44,10 +46,9 @@ const styles = {
     animation: 'ticker 30s linear infinite',
     paddingLeft: '100%',
   },
-  main: {
+main: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gridTemplateRows: 'auto auto',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
     gap: '2px',
     padding: '2px',
     background: '#1a1a2e',
@@ -102,13 +103,13 @@ const styles = {
                 status === 'error' ? '#FF6B6B' : '#2a2010',
     animation: status === 'running' ? 'blink 0.8s infinite' : 'none',
   }),
-  commandRoom: {
+ commandRoom: {
     background: '#07080f',
     border: '2px solid #C9A84C44',
     padding: '12px',
-    gridColumn: '1 / 4',
+    gridColumn: '1 / -1',
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
     gap: '12px',
   },
   ceoDesk: {
@@ -443,8 +444,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Task Feed */}
-        <div style={{ ...styles.room('#8B6914'), gridColumn: '2 / 4' }}>
+     {/* Task Feed */}
+        <div style={{ ...styles.room('#8B6914'), gridColumn: '1 / -1' }}>
           <div style={styles.roomLabel('#8B6914')}>◈ LIVE ACTIVITY FEED</div>
           <div style={styles.taskFeed}>
             {feedItems.map((item, i) => (
